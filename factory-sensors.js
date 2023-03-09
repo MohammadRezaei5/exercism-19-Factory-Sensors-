@@ -19,3 +19,17 @@ function checkHumidityLevel(humidityPercentage) {
 
 // console.log(checkHumidityLevel(60));
 // console.log(checkHumidityLevel(100));
+
+///---///
+
+function reportOverheating(temperature) {
+  if (temperature === null) {
+    throw new ArgumentError();
+  }
+  if (temperature > 500) {
+    throw new OverheatingError(temperature);
+  }
+}
+
+// console.log(reportOverheating(null));
+// console.log(reportOverheating(800));
