@@ -33,3 +33,38 @@ function reportOverheating(temperature) {
 
 // console.log(reportOverheating(null));
 // console.log(reportOverheating(800));
+
+///---///
+
+function monitorTheMachine(actions) {
+  try {
+    actions.check();
+  } catch (error) {
+    switch (error.constructor) {
+      case ArgumentError:
+        actions.alertDeadSensor();
+        return;
+      case OverheatingError: {
+        if (error.temperature > 600) {
+          actions.shutdown();
+          return;
+        }
+        if (error.temperature > 500) {
+          actions.alertOverheating();
+          return;
+        }
+      }
+      default:
+        throw error;
+    }
+  }
+}
+
+// console.log(
+//   monitorTheMachine({
+//     check,
+//     alertDeadSensor,
+//     alertOverheating,
+//     shutdown
+//   })
+// );
