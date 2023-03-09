@@ -8,3 +8,14 @@ class OverheatingError extends Error {
     this.temperature = temperature;
   }
 }
+
+///---///
+
+function checkHumidityLevel(humidityPercentage) {
+  if (humidityPercentage > 70) {
+    throw new Error("Implement the checkHumidity function");
+  }
+}
+
+// console.log(checkHumidityLevel(60));
+// console.log(checkHumidityLevel(100));
